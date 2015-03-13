@@ -21,9 +21,7 @@ class Auth extends CI_Controller {
 	public function login()
 	{
 		$data['options'] = $this->home_model->get_options();
-		$this->load->view('includes/login_header',$data);
-		$this->load->view('login');
-		$this->load->view('includes/footer');
+		$this->load->view('login', $data);
 	}
 
 
