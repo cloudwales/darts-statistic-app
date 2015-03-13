@@ -25,7 +25,6 @@
 	<small>Statistics</small>
 	<?php if ($this->session->userdata('is_logged_in')) { ?>
 		<span class="pull-right">
-			<a href="<?php echo base_url('new_player'); ?>" class="btn btn-primary btn-xs">New Player</a> 
 			<a href="<?php echo base_url('logout'); ?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-off"></span></a> 
 		</span>
 		<?php } else { ?>

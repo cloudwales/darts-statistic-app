@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://www.cloud-wales.co.uk/apps/darts-stats';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
