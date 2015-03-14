@@ -173,7 +173,7 @@ class Home extends CI_Controller {
 
 
 	// ----------------------------------------------
-	// ADMIN AREA
+	// ADMIN FUNCTIONS
 	// ----------------------------------------------
 
 	public function master_reset()
