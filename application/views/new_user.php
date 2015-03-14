@@ -29,9 +29,9 @@
 			  </div>
 
 			  <div class="form-group">
-			    <label for="pass_confirm">Confirm Password</label>
-			    <input type="pass_confirm" class="form-control" name="pass_confirm" id="pass_confirm" placeholder="Email address" value="<?php echo set_value('pass_confirm'); ?>">
-			    <?php echo form_error('pass_confirm'); ?>
+			    <label for="confirm_password">Confirm Password</label>
+			    <input type="confirm_password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Email address" value="<?php echo set_value('confirm_password'); ?>">
+			    <?php echo form_error('confirm_password'); ?>
 			  </div>
 	 		
 			  <button type="submit" class="btn btn-success">Save</button> <a href="<?php echo base_url();?>" class="btn btn-primary">Back</a>

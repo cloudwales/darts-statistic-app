@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -25,11 +25,11 @@
 	<small>Statistics</small>
 	<?php if ($this->session->userdata('is_logged_in')) { ?>
 		<span class="pull-right">
-			<a href="<?php echo base_url('logout'); ?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-off"></span></a> 
+			<a href="<?php echo base_url('logout'); ?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-off"></span> Logout</a> 
 		</span>
 		<?php } else { ?>
 		<span class="pull-right">
-			<a href="<?php echo base_url('login'); ?>" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-off"></span></a> 
+			<a href="<?php echo base_url('login'); ?>" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-off"></span> Login</a> 
 		</span>
 		<?php } ?>
 	</h1>

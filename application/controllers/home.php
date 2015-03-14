@@ -5,7 +5,7 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model(array('auth_model', 'home_model'));
+		$this->load->model(array('auth_model', 'home_model','user_model'));
 	}
 
 	// ----------------------------------------------
@@ -185,7 +185,57 @@ class Home extends CI_Controller {
 
 	// ----------------------------------------------
 
+
+	public function users()
+	{
+		$this->auth_model->is_logged_in();
+		$data['options'] = $this->home_model->get_options();
+		$data['users'] = $this->user_model->get_users();
+
+		$this->load->view('includes/header', $data);		
+		$this->load->view('users', $data);
+		$this->load->view('includes/footer');
+	}
+	
+
+	// ----------------------------------------------
+
 	public function new_user()
+	{
+		$data['options'] = $this->home_model->get_options();
+		$this->auth_model->is_logged_in();
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]|xss_clean');
+		$this->form_validation->set_rules('username', 'Username', 'is_unique[users.username]|trim|required|min_length[3]|xss_clean');
+		$this->form_validation->set_rules('email', 'Email', 'is_unique[users.email]|trim|is_email|min_length[3]|xss_clean');
+		$this->form_validation->set_rules('password', 'Email', 'trim|valid_email|min_length[3]|xss_clean');
+		$this->form_validation->set_rules('confirm_password', 'Email', 'matches[password]|trim|is_email|min_length[3]|xss_clean');
+		$this->form_validation->set_error_delimiters('<span class="text-danger"><small>', '</small></span>');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->load->view('includes/header', $data);		
+			$this->load->view('new_user',$data);
+			$this->load->view('includes/footer');
+		}
+		else
+		{
+			$this->home_model->save();
+			redirect('', 'refresh');
+		}
+	}
+	
+	// ----------------------------------------------
+
+
+	public function edit_user()
+	{
+		//Get Cracking
+	}
+	
+
+	// ----------------------------------------------
+
+	public function delete_user()
 	{
 		//Get Cracking
 	}

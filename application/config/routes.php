@@ -44,6 +44,7 @@ $route['default_controller'] = "home";
 $route['new_player'] = "home/new_player";
 $route['edit_player/(:num)'] = "home/edit_player/$1";
 $route['delete_player/(:num)'] = "home/delete_player/$1";
+$route['users'] = "home/users";
 $route['new_user'] = "home/new_user";
 $route['master_reset'] = "home/master_reset";
 $route['login'] = "auth/login";
