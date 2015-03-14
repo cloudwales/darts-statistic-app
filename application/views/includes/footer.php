@@ -5,7 +5,7 @@
 	
 	<a href="<?php echo base_url('new_player'); ?>" class="btn btn-primary btn-xs">New Player</a> | 
 	
-	<a href="<?php echo base_url('reset');?>" class="btn btn-danger btn-xs" onClick="return confirm('Are you sure you want to reset? This will delete all players and statistics!')"><span class="glyphicon glyphicon-trash"></span> Master Reset</a>
+	<a href="<?php echo base_url('master_reset');?>" class="btn btn-danger btn-xs" onClick="return confirm('Are you sure you want to reset? This will delete all players and statistics!')"><span class="glyphicon glyphicon-trash"></span> Master Reset</a>
 	<?php } ?>
 </div>
 </div>

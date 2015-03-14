@@ -45,7 +45,7 @@ $route['new_player'] = "home/new_player";
 $route['edit_player/(:num)'] = "home/edit_player/$1";
 $route['delete_player/(:num)'] = "home/delete_player/$1";
 $route['new_user'] = "home/new_user";
-$route['reset'] = "home/reset";
+$route['master_reset'] = "home/master_reset";
 $route['login'] = "auth/login";
 $route['logout'] = "auth/logout";
 
