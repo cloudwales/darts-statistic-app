@@ -10,8 +10,12 @@
 			    <?php echo form_error('name'); ?>
 			  </div>
 	 		
-			  <button type="submit" class="btn btn-success">Save</button> <a href="<?php echo base_url();?>" class="btn btn-primary">Back</a>
+			  <span class="pull-right">
+			  	<button type="submit" class="btn btn-sm btn-success">Save</button> <a href="<?php echo base_url();?>" class="btn btn-sm btn-primary">Cancel</a>
+			  </span>
 			</div>
 			</form>
 		</p>
+		<br/><br/>
+		<br/><br/>
 	</div>

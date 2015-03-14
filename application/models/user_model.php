@@ -13,6 +13,18 @@ class User_model extends CI_Model {
 		$query = $this->db->get('users');
 		return $query->result_array();	
 	}
+
+	public function save_user($data)
+	{
+		$this->db->insert('users', $data); 	
+	}
+	
+
+	public function delete_user($id)
+	{
+		$this->db->delete('users', array('id' => $id));
+	}
+	
 	
 
 }

@@ -19,8 +19,7 @@
 
 <div class="col-lg-12">
 	<h1>
-	
-	<?php echo $options->title; ?> 
+		<?php echo $options->title; ?>
 
 	<small>Statistics</small>
 	<?php if ($this->session->userdata('is_logged_in')) { ?>
@@ -34,5 +33,55 @@
 		<?php } ?>
 	</h1>
 	<hr/>
-	<p><?php echo $this->session->flashdata('message'); ?></p>
+<?php if ($this->session->userdata('is_logged_in')) { ?>
+
+
+<p>
+
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="<?php echo base_url(''); ?>">Home</a></li>
+
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+      Players <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li>
+      	<a href="<?php echo base_url('new_player'); ?>"><span class="glyphicon glyphicon-plus"></span> New Player</a>
+      </li>
+    </ul>
+  </li>
+
+
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+      Users <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li>
+      	<a href="<?php echo base_url('users'); ?>"><span class="glyphicon glyphicon-user"></span> View Users</a>
+      </li>
+      <li>
+      	<a href="<?php echo base_url('new_user'); ?>"><span class="glyphicon glyphicon-plus"></span> New User</a>
+      </li>
+    </ul>
+  </li>
+
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+      Settings <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li>
+      	<a href="<?php echo base_url('master_reset');?>" onClick="return confirm('Are you sure you want to reset? This will delete all players and statistics!')"><span class="glyphicon glyphicon-trash"></span> Master Reset</a>
+      </li>
+    </ul>
+  </li>
+  
+</ul>
+</p>
+
+<?php } ?>
+<p><?php echo $this->session->flashdata('message'); ?></p>	
 </div>
+

@@ -30,6 +30,13 @@ class Home extends CI_Controller {
 	// PLAYER FUNCTIONS 
 	// ----------------------------------------------
 
+
+	public function players()
+	{
+		//Get Cracking
+	}
+	
+
 	public function new_player()
 	{	
 		$data['options'] = $this->home_model->get_options();
@@ -45,7 +52,7 @@ class Home extends CI_Controller {
 		}
 		else
 		{
-			$this->home_model->save();
+			$this->home_model->save_player();
 			redirect('', 'refresh');
 		}
 	}
@@ -71,7 +78,7 @@ class Home extends CI_Controller {
 		else
 		{
 			$id = $this->uri->segment(2);
-			$this->home_model->update($id);
+			$this->home_model->update_player($id);
 			redirect('', 'refresh');
 		}
 	}
@@ -202,25 +209,47 @@ class Home extends CI_Controller {
 
 	public function new_user()
 	{
+		// Call Libraries
+		$this->load->library('encrypt');
+
+		// Check settings and authentication
 		$data['options'] = $this->home_model->get_options();
 		$this->auth_model->is_logged_in();
+
+		// Validation Rules
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[3]|xss_clean');
 		$this->form_validation->set_rules('username', 'Username', 'is_unique[users.username]|trim|required|min_length[3]|xss_clean');
-		$this->form_validation->set_rules('email', 'Email', 'is_unique[users.email]|trim|is_email|min_length[3]|xss_clean');
-		$this->form_validation->set_rules('password', 'Email', 'trim|valid_email|min_length[3]|xss_clean');
-		$this->form_validation->set_rules('confirm_password', 'Email', 'matches[password]|trim|is_email|min_length[3]|xss_clean');
+		$this->form_validation->set_rules('email', 'Email', 'is_unique[users.email]|trim|valid_email|min_length[3]|xss_clean');
+		$this->form_validation->set_rules('password', 'Password', 'trim|min_length[3]|xss_clean');
+		$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'matches[password]|trim|min_length[3]|xss_clean');
 		$this->form_validation->set_error_delimiters('<span class="text-danger"><small>', '</small></span>');
 
+		
 		if ($this->form_validation->run() == FALSE)
 		{
+			// Load form if validation fails or when arriving at page
 			$this->load->view('includes/header', $data);		
 			$this->load->view('new_user',$data);
 			$this->load->view('includes/footer');
 		}
 		else
 		{
-			$this->home_model->save();
-			redirect('', 'refresh');
+			// Grab the password input and encrypt
+			$password = $this->input->post('password');
+			$encrypted_password = $this->encrypt->sha1($password);
+
+			// Grab the rest of the form data and prepare for the database
+			$data = array(
+			   'name' => $this->input->post('name'),
+			   'username' => $this->input->post('username'),
+			   'email' => $this->input->post('email'),
+			   'password' => $encrypted_password
+			);
+
+			// Save to the database and set success message then redirect to the users page
+			$this->user_model->save_user($data);
+			$this->session->set_flashdata('message', '<div class="alert alert-info" role="alert">User Created!!</div>');
+			redirect('users', 'refresh');
 		}
 	}
 	
@@ -237,7 +266,12 @@ class Home extends CI_Controller {
 
 	public function delete_user()
 	{
-		//Get Cracking
+		$this->auth_model->is_logged_in();
+
+		$id = $this->uri->segment(2);
+		$this->user_model->delete_user($id);
+		$this->session->set_flashdata('message', '<div class="alert alert-info" role="alert">User Deleted!!</div>');
+		redirect('users', 'refresh');
 	}
 	
 

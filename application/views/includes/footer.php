@@ -1,20 +1,4 @@
-<div class="container">
-<div class="col-lg-12">
 
-<?php if ($this->session->userdata('is_logged_in')) { ?>
-<hr>
-	<h4>Admin Tools</h4>
-
-	<a href="<?php echo base_url(''); ?>" class="btn btn-default btn-xs">Main Menu</a> 
-	
-	<a href="<?php echo base_url('new_player'); ?>" class="btn btn-default btn-xs">New Player</a> 
-
-	<a href="<?php echo base_url('users'); ?>" class="btn btn-default btn-xs">Users</a>
-	<span class="pull-right">
-	<a href="<?php echo base_url('master_reset');?>" class="btn btn-danger btn-xs" onClick="return confirm('Are you sure you want to reset? This will delete all players and statistics!')"><span class="glyphicon glyphicon-trash"></span> Master Reset</a></span>
-	<?php } ?>
-</div>
-</div>
 
 
 <script>
@@ -28,7 +12,7 @@ function myFunction() {
     document.getElementById("demo").innerHTML = x;
 }
 </script>
-</div>
+
 <footer>
 <div class="col-lg-12">
 <hr/>

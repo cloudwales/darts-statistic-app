@@ -1,7 +1,7 @@
 
 	<div id="body">
 		<p><br/><br/>
-			<form role="form" action="<?php echo base_url('new_player'); ?>" method="POST">
+			<form role="form" action="<?php echo base_url('new_user'); ?>" method="POST">
 			<div class="col-lg-6">
 
 			  <div class="form-group">
@@ -30,11 +30,11 @@
 
 			  <div class="form-group">
 			    <label for="confirm_password">Confirm Password</label>
-			    <input type="confirm_password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Email address" value="<?php echo set_value('confirm_password'); ?>">
+			    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" value="<?php echo set_value('confirm_password'); ?>">
 			    <?php echo form_error('confirm_password'); ?>
 			  </div>
 	 		
-			  <button type="submit" class="btn btn-success">Save</button> <a href="<?php echo base_url();?>" class="btn btn-primary">Back</a>
+			  <span class="pull-right"><button type="submit" class="btn btn-success">Save</button> <a href="<?php echo base_url();?>" class="btn btn-primary">Back</a></span>
 			</div>
 			</form>
 		</p>

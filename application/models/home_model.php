@@ -43,13 +43,13 @@ class Home_model extends CI_Model {
 		return $query->row_array();	
 	}
 
-	public function save()
+	public function save_player()
 	{
 		$data = $this->input->post();
 		$this->db->insert('matches', $data); 	
 	}
 
-	public function update($id)
+	public function update_player($id)
 	{
 		$data = array(
 			'played' => $this->input->post('played'),
