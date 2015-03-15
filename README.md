@@ -2,6 +2,7 @@
 
 
 <hr>
+<h4>Installation details</h4>
 
 <p>To install on a web server:</p>
 <ul>
